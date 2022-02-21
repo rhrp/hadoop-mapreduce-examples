@@ -1,0 +1,16 @@
+#Interface Web
+#http://127.0.0.1:8080/explorer.html#/
+
+#Criar um directorio
+bin/hdfs dfs -mkdir /teste2 
+
+#Listar um directorio
+bin/hdfs dfs -ls /
+bin/hdfs dfs -ls /teste2
+
+#Carregar um ficheiro
+bin/hdfs dfs -put ~/Transferências/humans-vs-machines.pdf /teste
+
+
+#Cat de um ficheiro de TXT
+bin/hadoop fs -cat /teste/ficheiro01.txt

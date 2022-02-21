@@ -1,0 +1,31 @@
+#
+# Howto para o exemplo WordCount
+#
+
+#
+# Indicar ao Hadoop onde estão as ferramentas do Java (javac, etc.)
+#
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+
+
+#
+# Compilação da aplicação e geração do jar
+#
+bin/hadoop com.sun.tools.javac.Main WordCount.java
+jar cf wc.jar WordCount*.class
+
+#
+# Inicia o Job
+# Dentro do HDFS, no directorio /teste/input/, estão ficheiros de texto com várias palavras
+# ficheiro0*.txt 
+# O directorio /teste/output não pode existi. É o Hadoop que o vai criar
+#
+bin/hadoop jar wc.jar WordCount /teste/input /teste/output
+
+
+#Visualizar o job no JobHistory
+#http://127.0.0.1:8084/jobhistory/job/job_1645447529481_0003
+
+
+#Visualizar o resultado do job
+../../bin/hdfs dfs -cat /teste/output1/part-r-00000

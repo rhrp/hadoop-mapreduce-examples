@@ -1,0 +1,19 @@
+#HDFS::NameNode - Gere os nos do cluster de dados 
+#Default HTTP port is 9870.
+#MyCondif: 8080
+
+#HDFS::DataNode - Node de dados do cluster
+#MyConfig: 8081
+
+#YARN::ResourceManager	
+#Default HTTP port is 8088.
+#MyConfig: 8082
+
+#YARN::NodeManager
+#Default HTTP port is 
+#MyConfig: 8083
+
+#MapReduce::JobHistory Server - Gere Jobs
+#Default HTTP port is 19888. 
+#MyConfig: 8084
+
