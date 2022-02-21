@@ -19,7 +19,7 @@
 <configuration>
  <property>
    <name>dfs.namenode.name.dir</name>
-   <value>/tmp/rhp/aaa/namenode</value>
+   <value>/home/hadoop/data/node01/namenode</value>
  </property>
  <property>
    <name>dfs.namenode.handler.count</name>
@@ -31,7 +31,7 @@
  </property>
  <property>
    <name>dfs.datanode.data.dir</name>
-   <value>/tmp/rhp/aaa/datanode</value>
+   <value>/home/hadoop/data/node01/datanode</value>
  </property>
  <property>
    <name>dfs.namenode.http-address</name>

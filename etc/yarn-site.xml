@@ -15,31 +15,61 @@
 <configuration>
   <property>
     <name>yarn.resourcemanager.webapp.address</name>
-    <value>127.0.0.1:8082</value>
+    <value>0.0.0.0:8082</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address</name>
-    <value>127.0.0.1:9030</value>
+    <value>0.0.0.0:9030</value>
   </property>
   <property>
     <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value>127.0.0.1:9031</value>
+    <value>0.0.0.0:9031</value>
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value>127.0.0.1:9032</value>
+    <value>0.0.0.0:9032</value>
   </property>
   <property>
     <name>yarn.resourcemanager.admin.address</name>
-    <value>127.0.0.1:9033</value>
+    <value>0.0.0.0:9033</value>
   </property>
   <property>
     <name>yarn.nodemanager.localizer.address</name>
-    <value>127.0.0.1:9040</value>
+    <value>0.0.0.0:9040</value>
   </property>
- <property>
+  <property>
+    <name>yarn.web-proxy.address</name>
+    <value>0.0.0.0:9041</value>
+  </property>
+  <property>
     <name>yarn.nodemanager.webapp.address</name>
-    <value>127.0.0.1:8083</value>
+    <value>0.0.0.0:8083</value>
+  </property>
+  <!--
+    Foi necessario para que os Jobs 
+    o Disco está a 92%
+    
+  <property>
+    <name>yarn.scheduler.capacity.root.support.user-limit-factor</name>  
+    <value>2</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.disk-health-checker.min-healthy-disks</name>
+    <value>0.0</value>
+  </property>
+  -->
+  <property>
+    <name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name>
+    <value>95.0</value>
+  </property>
+
+  <property>
+      <name>yarn.acl.enable</name>
+      <value>0</value> 
+  </property>
+  <property>
+       <name>yarn.resourcemanager.hostname</name>
+       <value>rhpmasternode</value>
   </property>
   <property>
     <name>yarn.nodemanager.aux-services</name>

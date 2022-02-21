@@ -1,0 +1,13 @@
+#Listar nodes
+${HADOOP_HOME}/bin/yarn node -list
+
+#Listar jobs
+${HADOOP_HOME}/bin/yarn app -list
+
+#Estado de um job
+${HADOOP_HOME}/bin/yarn app -status application_1645485922616_0002
+
+#Terminar um job
+${HADOOP_HOME}/bin/yarn app -kill application_1645485922616_0002
+
+
