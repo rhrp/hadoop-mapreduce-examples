@@ -1,3 +1,5 @@
+package rhp.hadoop.examples;
+
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -11,45 +13,64 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class WordCount 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class CommonFriends
 {
+  private static Logger logger = LoggerFactory.getLogger(CommonFriends.class);
+
   public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable>
   {
      private final static IntWritable one = new IntWritable(1);
      private Text word = new Text();
 
-     public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
+    /**
+     * Produz um mapa Amigo
+     */ 
+     public void map(Object pKey, Text friends, Context context) throws IOException, InterruptedException 
      {
-         StringTokenizer itr = new StringTokenizer(value.toString());
+         String[] lPersonFriends = friends.toString().split(":");
+         String lPerson=lPersonFriends[0];
+         String lListOfFriends=lPersonFriends[1];
+
+         int n=0;
+         StringTokenizer itr = new StringTokenizer(lListOfFriends);
          while (itr.hasMoreTokens()) 
          {
            word.set(itr.nextToken());
            context.write(word, one);
+           n++;
          }
+         logger.info("MAP :: pKey={}  Text={}   Person: {}    List of friends: {}  Total: {}",pKey,friends.toString(),lPerson,lListOfFriends,n);
      }
   }
 
   public static class IntSumReducer extends Reducer<Text,IntWritable,Text,IntWritable> 
   {
-    private IntWritable result = new IntWritable();
+    private IntWritable lResult = new IntWritable();
 
-    public void reduce(Text key, Iterable<IntWritable> values,Context context) throws IOException, InterruptedException 
+    public void reduce(Text pKey, Iterable<IntWritable> values,Context context) throws IOException, InterruptedException 
     {
       int sum = 0;
       for (IntWritable val : values) 
       {
         sum += val.get();
+        logger.info("REDUCE :: pKey={}  val={}",pKey,val); 
       }
-      result.set(sum);
-      context.write(key, result);
+      lResult.set(sum);
+      context.write(pKey,lResult);
+
+      logger.info("REDUCE :: pKey={}  result: {}",pKey,lResult);
     }
   }
 
   public static void main(String[] args) throws Exception 
   {
     Configuration conf = new Configuration();
-    Job job = Job.getInstance(conf, "word count");
-    job.setJarByClass(WordCount.class);
+    Job job = Job.getInstance(conf, "Friends count");
+    job.setJarByClass(CommonFriends.class);
     job.setMapperClass(TokenizerMapper.class);
     job.setCombinerClass(IntSumReducer.class);
     job.setReducerClass(IntSumReducer.class);
