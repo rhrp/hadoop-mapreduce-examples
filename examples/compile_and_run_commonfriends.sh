@@ -14,4 +14,5 @@ ${HADOOP_HOME}/bin/hadoop fs -cat /examples/amigos/output/part-r-00000
 
 # Clean the output and binaries
 ${HADOOP_HOME}/bin/hadoop fs -rm -r  /examples/amigos/output
+rm commonfriends.jar
 rm  target/classes/rhp -rf

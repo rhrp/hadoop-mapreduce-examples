@@ -8,4 +8,5 @@ Examples of Hadoop ReduceMap applications
 
 ## Run examples
 	cd examples
+	./compile_and_run_wordcount.sh
 	./compile_and_run_commonfriends.sh
