@@ -1,6 +1,9 @@
 # Hadoop ReduceMap Examples
 Examples of Hadoop ReduceMap applications
 
+## Set the Environment
+	cd scripts
+	source setenv.sh
 ## Start/Stop the cluster (one local node)
 	cd scripts
 	./start.sh
