@@ -1,4 +1,4 @@
-# Hadoop ReduceMap Examples
+# Hadoop MapReduce Examples
 Examples of Hadoop ReduceMap applications
 
 ## Set the Environment
